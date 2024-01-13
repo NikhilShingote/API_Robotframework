@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.9.13 on win32)" generated="20231211 20:39:18.504" rpa="false" schemaversion="4">
+<suite id="s1" name="Complex JSON Validation" source="C:\Users\admin\PycharmProjects\API_Robotframework\TestCasesNew\Complex_JSON_Validation.robot">
+<test id="s1-t1" name="JSONTestcase" line="12">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231211 20:39:18.788" level="INFO">Creating Session using : alias=mysession, url=https://restcountries.eu, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231211 20:39:18.788" endtime="20231211 20:39:18.789"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/rest/v2/alpha/IN</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231211 20:40:00.872" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54AF7940&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond')': /rest/v2/alpha/IN</msg>
+<msg timestamp="20231211 20:40:43.177" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54ADBB80&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond')': /rest/v2/alpha/IN</msg>
+<msg timestamp="20231211 20:41:25.644" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54AF7C10&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond')': /rest/v2/alpha/IN</msg>
+<msg timestamp="20231211 20:42:07.711" level="FAIL">ConnectionError: HTTPSConnectionPool(host='restcountries.eu', port=443): Max retries exceeded with url: /rest/v2/alpha/IN (Caused by NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54AF7DC0&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))</msg>
+<status status="FAIL" starttime="20231211 20:39:18.789" endtime="20231211 20:42:07.751"/>
+</kw>
+<kw name="to JSON ${response.content}">
+<var>${json_obj}</var>
+<status status="NOT RUN" starttime="20231211 20:42:07.757" endtime="20231211 20:42:07.757"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${country_name}</var>
+<arg>${json_obj}</arg>
+<arg>$.name</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="NOT RUN" starttime="20231211 20:42:07.757" endtime="20231211 20:42:07.757"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${country_name[0]}</arg>
+<arg>India</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20231211 20:42:07.758" endtime="20231211 20:42:07.758"/>
+</kw>
+<status status="FAIL" starttime="20231211 20:39:18.787" endtime="20231211 20:42:07.758">ConnectionError: HTTPSConnectionPool(host='restcountries.eu', port=443): Max retries exceeded with url: /rest/v2/alpha/IN (Caused by NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54AF7DC0&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))</status>
+</test>
+<status status="FAIL" starttime="20231211 20:39:18.507" endtime="20231211 20:42:07.760"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Complex JSON Validation">Complex JSON Validation</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231211 20:40:00.872" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54AF7940&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond')': /rest/v2/alpha/IN</msg>
+<msg timestamp="20231211 20:40:43.177" level="WARN">Retrying (RetryAdapter(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54ADBB80&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond')': /rest/v2/alpha/IN</msg>
+<msg timestamp="20231211 20:41:25.644" level="WARN">Retrying (RetryAdapter(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPSConnection object at 0x000001DD54AF7C10&gt;: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond')': /rest/v2/alpha/IN</msg>
+</errors>
+</robot>
+ailed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond')': /rest/v2/alpha/IN</msg>
+</errors>
+</robot>
